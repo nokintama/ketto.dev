@@ -43,8 +43,8 @@ class UserProblemStats(models.Model):
         indexes = [
             models.Index(fields=['user', 'solved', 'last_attempted_at']),
         ]
-        verbose_name = 'Статистика юзера по задаче'
-        verbose_name_plural = 'Статистика юзеров по задачам'
+        verbose_name = 'User statistics for the task'
+        verbose_name_plural = 'User statistics by task'
 
     def __str__(self):
         return f'{self.user.username} — {self.problem.slug} (решил: {self.solved})'
