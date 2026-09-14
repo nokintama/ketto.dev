@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'drf_spectacular',
+    'apps.problems',
+    'apps.profiles',
+    'apps.accounts'
 ]
 
 MIDDLEWARE = [
@@ -65,6 +68,8 @@ SPECTACULAR_SETTINGS = {
     'TITLE': 'ketto.dev API',
     'VERSION': '1.0.0',
 }
+
+AUTH_USER_MODEL = 'accounts.User'
 
 REDIS_URL = env('REDIS_URL')
 SERVICE_TOKEN = env('SERVICE_TOKEN')
