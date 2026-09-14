@@ -1,0 +1,20 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.sqlite3
+
+# Env
+.env
+
+# Go
+arena/bin/
+judge/bin/
+
+# Node
+frontend/node_modules/
+
+# IDE
+.idea/
+.vscode/
