@@ -4,17 +4,38 @@ __pycache__/
 *.pyc
 *.pyo
 *.sqlite3
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+staticfiles/
+media/
 
 # Env
 .env
+.env.local
+.env.*.local
+!.env.example
 
 # Go
-arena/bin/
-judge/bin/
+bin/
+/arena/arena
+/judge/judge
+*.exe
+*.test
+*.out
 
 # Node
-frontend/node_modules/
+node_modules/
+.next/
+dist/
+build/
+.turbo/
 
-# IDE
+# IDE / OS
 .idea/
 .vscode/
+.DS_Store
+*.swp
+
+# Logs
+*.log
