@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'drf_spectacular',
     'apps.problems',
     'apps.profiles',
+    'apps.matches',
     'apps.accounts'
 ]
 

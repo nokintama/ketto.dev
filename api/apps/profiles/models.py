@@ -21,3 +21,30 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} ({self.elo})'
+
+
+class UserProblemStats(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='problem_stats'
+    )
+    problem = models.ForeignKey(
+        'problems.Problem',
+        on_delete=models.CASCADE,
+        related_name='user_stats'
+    )
+    attempts = models.IntegerField(default=0)
+    solved = models.BooleanField(default=False)
+    last_attempted_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        unique_together = ('user', 'problem')
+        indexes = [
+            models.Index(fields=['user', 'solved', 'last_attempted_at']),
+        ]
+        verbose_name = 'Статистика юзера по задаче'
+        verbose_name_plural = 'Статистика юзеров по задачам'
+
+    def __str__(self):
+        return f'{self.user.username} — {self.problem.slug} (решил: {self.solved})'
