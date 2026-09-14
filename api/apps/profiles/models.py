@@ -47,4 +47,4 @@ class UserProblemStats(models.Model):
         verbose_name_plural = 'User statistics by task'
 
     def __str__(self):
-        return f'{self.user.username} — {self.problem.slug} (решил: {self.solved})'
+        return f'{self.user.username} — {self.problem.slug} (solved: {self.solved})'
