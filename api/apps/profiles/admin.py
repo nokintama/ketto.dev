@@ -21,6 +21,7 @@ class BadgeAdmin(admin.ModelAdmin):
     list_display = ('slug', 'name', 'color', 'is_assignable')
     prepopulated_fields = {'slug': ('name',)}
     list_filter = ('is_assignable',)
+    search_fields = ('slug', 'name')
 
 
 @admin.register(UserBadge)
