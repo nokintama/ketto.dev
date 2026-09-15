@@ -5,10 +5,14 @@ from .models import User
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from .serializers import RegisterSerializer, UserSerializer
 from rest_framework.response import Response
-
+from drf_spectacular.utils import extend_schema
+from .serializers import RegisterSerializer
 class SignUpView(APIView):
     permission_classes = [AllowAny]
-
+    @extend_schema(
+            request=RegisterSerializer,
+            responses={201: RegisterSerializer},
+    )
     def post(self, request):
         serializer = RegisterSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
