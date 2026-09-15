@@ -2,6 +2,41 @@ from django.db import models
 from django.conf import settings
 
 
+class Badge(models.Model):
+    slug = models.CharField(max_length=24)
+    name = models.CharField(max_length=24)
+    color = models.CharField(max_length=7, default="#ffffff")
+    description = models.CharField(max_length=200, blank=True)
+    icon = models.URLField(blank=True)
+    is_assignable = models.BooleanField(default=False) 
+    class Meta:
+        verbose_name = 'badge'
+        verbose_name_plural = 'badges'
+        ordering = ['name']
+    def __str__(self):
+        return self.name
+
+class UserBadge(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='badges'
+    )
+    badge = models.ForeignKey(
+        Badge,
+        on_delete=models.CASCADE,
+        related_name='users'
+    )
+    assigned_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'badge')
+        verbose_name = 'User badge'
+        verbose_name_plural = 'Users Badges'
+
+    def __str__(self):
+        return f'{self.user.username} — {self.badge.name}'
+
 class Profile(models.Model):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,

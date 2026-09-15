@@ -5,7 +5,7 @@ from .models import User
 @admin.register(User)
 class UserAdmin(BaseUserAdmin):
     fieldsets = BaseUserAdmin.fieldsets + (
-        ('Бан', {'fields': ('is_banned', 'ban_reason')}),
+        ('Ban', {'fields': ('is_banned', 'ban_reason')}),
     )
     list_display = ('username', 'email', 'is_banned', 'date_joined')
     list_filter = ('is_banned',)
