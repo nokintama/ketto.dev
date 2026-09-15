@@ -67,9 +67,10 @@ REST_FRAMEWORK = {
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'ketto.dev API',
+    'DESCRIPTION': 'API ketto.dev',
+    'SERVE_INCLUDE_SCHEMA': False,
     'VERSION': '1.0.0',
 }
-
 AUTH_USER_MODEL = 'accounts.User'
 
 REDIS_URL = env('REDIS_URL')
